@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>portfolio | Web Designer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Global styles */
+    body {
+      background-color: #25032d;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+    a {
+      transition: color 0.3s ease;
+    }
+    /* Navigation styles */
+    nav {
+      background-color: #2e2e65;
+      box-shadow: 0 2px 10px rgba(49, 49, 68, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    nav ul {
+      display: flex;
+      justify-content: flex-start;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 2rem;
+      gap: 2.5rem;
+    }
+    nav ul li {
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    nav ul li a {
+      color: #f0f1f6;
+      text-decoration: none;
+      padding: 0.25rem;
+      border-radius: 5px;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #fcfdfd;
+      font-weight: 700;
+      text-shadow: 0 0 10px #f9fafb;
+    }
+    nav .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: rgb(243, 234, 234);
+      margin-right: auto;
+      letter-spacing: -0.025em;
+      cursor: default;
+      user-select: none;
+    }
+    /* Hero styles */
+    .hero-section {
+      max-width: 1100px;
+      margin: 3rem auto 5rem;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 3rem;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    .hero-section h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      color: white;
+    }
+    .hero-section .highlighted-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #00d9ff;
+      filter: drop-shadow(0 0 10px #00d9ff);
+      margin-bottom: 1.2rem;
+      font-family: 'Arial Black', Arial, sans-serif;
+    }
+    .hero-section p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #c3cad9;
+      max-width: 420px;
+      margin-bottom: 1.5rem;
+    }
+    .contact-info {
+      font-size: 0.95rem;
+      color: #a1a8c6;
+      margin-bottom: 2rem;
+    }
+    .contact-info span {
+      font-weight: 700;
+      color: #dbeafe;
+    }
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .btn-glow {
+      background-color: #00d9ff;
+      border: none;
+      padding: 15px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00d9ffa0;
+      color: #07121e;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.02em;
+      min-width: 120px;
+      text-align: center;
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 40px #00d9ff;
+      transform: scale(1.05);
+    }
+    /* Social letters below hero */
+    .social-letters {
+      display: flex;
+      gap: 12px;
+    }
+    .social-letters button {
+      background-color: transparent;
+      border: 1.5px solid #ffffff22;
+      padding: 7px 11px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.90rem;
+      color: #a3aecb;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      user-select: none;
+      letter-spacing: 0.1em;
+    }
+    .social-letters button:hover {
+      border-color: #00d9ff;
+      color: #00d9ff;
+      box-shadow: 0 0 5px #00d9ff;
+      background-color: #002c3c;
+    }
+    /* Hero image */
+    .hero-image {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 35px #00d9ff88;
+    }
+    .hero-image img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+    }
+    /* Section Heading */
+    section h2 {
+      font-weight: 800;
+      font-size: 2.4rem;
+      letter-spacing: -0.02em;
+      border-bottom: 2px solid #00d9ff;
+      padding-bottom: 0.3rem;
+      margin-bottom: 2rem;
+      color: rgb(255, 255, 255);
+      max-width: 250px;
+    }
+    /* About section */
+    .about-section {
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      color: #d1d9ef;
+    }
+    .about-photo-wrapper {
+      flex-shrink: 0;
+      position: relative;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 30px #00d9ffa6;
+      border: 4px solid #00d9ff55;
+    }
+    .about-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+    }
+    .about-text {
+      max-width: 700px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      user-select: text;
+    }
+    .about-intro {
+      color: #00d9ff;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+    .about-btn {
+      margin-top: 2rem;
+      background-color: #00d9ff;
+      border: none;
+      color: #f0f4f7;
+      box-shadow: 0 0 20px #00d9ff90;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      padding: 0.72rem 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      letter-spacing: 0.02em;
+    }
+    .about-btn:hover {
+      box-shadow: 0 0 35px #00d9ff;
+      transform: scale(1.08);
+    }
+    /* Skills Section */
+    .skills-section {
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+    .skills-section h2 {
+      margin-bottom: 2rem;
+    }
+    .skills-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    .technical-skills,
+    .professional-skills {
+      flex: 1;
+      min-width: 280px;
+      color: #ebecf3;
+    }
+    .technical-skills h3,
+    .professional-skills h3 {
+      font-weight: 700;
+      color: #00d9ff;
+      letter-spacing: 0.07em;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    /* Progress bar for technical skills */
+    .skill-bar {
+      margin-bottom: 1.25rem;
+    }
+    .skill-bar-label {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      user-select: none;
+      color: #f5f7fcdd;
+    }
+    .progress-container {
+      width: 100%;
+      height: 14px;
+      background-color: #f0f0f3;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px #002a45;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00d9ff, #007aaf);
+      border-radius: 10px 0 0 10px;
+      box-shadow: 0 0 12px #00d9ffaa;
+      transition: width 1.3s ease;
+    }
+    /* Professional skills circular charts */
+    .prof-skill-circles {
+      display: flex;
+      gap: 2rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .circle-skill {
+      text-align: center;
+      width: 100px;
+      user-select: none;
+    }
+    .circle-svg {
+      transform: rotate(-90deg);
+    }
+    .circle-bg {
+      fill: none;
+      stroke: #f9f9fc;
+      stroke-width: 10;
+    }
+    .circle-progress {
+      fill: none;
+      stroke: #00d9ffaa;
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 283; /* 2 * pi * r(45) */
+      stroke-dashoffset: 283;
+      transition: stroke-dashoffset 1.2s ease;
+      filter: drop-shadow(0 0 5px #0e0e0eaa);
+    }
+    .circle-percentage {
+      font-weight: 700;
+      font-size: 1.3rem;
+      fill: #00d9ff;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      pointer-events:none;
+      user-select:none;
+    }
+    .skill-name {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #b9c6d9;
+    }
+    /* projects section */
+    .projects-section {
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .projects-item {
+      background-color: #181832;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 25px #00d9ff44;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.35s ease;
+      user-select: none;
+    }
+    .projects-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 40px #00d9ffaa;
+    }
+    .projects-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.3s ease;
+      filter: brightness(0.9);
+    }
+    .projects-item:hover img {
+      filter: brightness(1);
+    }
+    /* Contact section */
+    .contact-section {
+      max-width: 550px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .contact-section h2 {
+      margin-bottom: 2rem;
+      max-width: 320px;
+      color: white;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    input, textarea {
+      background-color: #1a1a37;
+      border: none;
+      border-radius: 8px;
+      color: #c0d0f4;
+      font-size: 1rem;
+      padding: 0.85rem 1.15rem;
+      box-shadow: inset 0 1px 5px #002a45;
+      resize: vertical;
+      transition: box-shadow 0.25s ease, background-color 0.25s ease;
+      outline-offset: 1.5px;
+      outline-color: transparent;
+      outline-style: solid;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #57647d;
+      font-style: italic;
+    }
+    input:focus, textarea:focus {
+      box-shadow: 0 0 12px #00d9ffaa;
+      background: #002a4d;
+      outline-color: #00d9ff;
+    }
+    textarea {
+      min-height: 110px;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+    .submit-btn {
+      background-color: #00d9ff;
+      border: none;
+      padding: 1rem 0;
+      border-radius: 15px;
+      color: #07121e;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 0 24px #00d9ffcc;
+      letter-spacing: 0.025em;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.35s ease;
+    }
+    .submit-btn:hover {
+      box-shadow: 0 0 50px #00d9ff;
+      transform: scale(1.03);
+    }
+
+    /* Responsive Dynamics */
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero-image {
+        max-width: 275px;
+        margin: 0 auto;
+      }
+      .about-section {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+      .about-text {
+        max-width: 100%;
+      }
+      nav ul {
+        padding: 0.75rem 1rem;
+        gap: 1.2rem;
+      }
+      nav ul li {
+        font-size: 1rem;
+      }
+      .skills-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .prof-skill-circles {
+        justify-content: center;
+      }
+      .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      }
+    }
+   
+  
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 40px 20px;
+      background-color: #1c1a2d;
+      color: #111;
+    }
+    /* Container and headings */
+    .Certificates-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .Certificates-header {
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .Certificates-header h2 {
+      font-weight: 700;
+      font-size: 1.9rem;
+      margin: 0 0 6px 0;
+    }
+    .Certificates-header h3 {
+      margin: 0 0 14px 0;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #555;
+      font-style: italic;
+    }
+    .Certificates-header p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #666;
+      margin: 0;
+      white-space: pre-line;
+    }
+    /* Cards wrapper */
+    .cards-wrapper {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    /* Each card */
+    .card {
+      background-color: #1a1a1a;
+      color: #eee;
+      width: 280px;
+      padding: 1.6rem 1.8rem 2rem 1.8rem;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 330px;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 12px 26px rgba(0,0,0,0.5);
+    }
+    /* Circle number */
+    .circle-number {
+      background-color: #eee;
+      color: #111;
+      font-weight: 700;
+      font-size: 1.15rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      line-height: 32px;
+      margin: 0 auto 16px auto;
+      user-select: none;
+      box-shadow: 0 0 6px rgba(255 255 255 / 0.3);
+    }
+    /* Titles */
+    .card h4 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0 0 14px 0;
+    }
+    /* paragraphs */
+    .card p {
+      font-size: 0.83rem;
+      line-height: 1.4;
+      color: #ddd;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    /* buttons */
+    .read-more-btn {
+      background: white;
+      border: none;
+      color: #111;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      align-self: center;
+      min-width: 120px;
+    }
+    .read-more-btn:hover,
+    .read-more-btn:focus {
+      background-color: #555;
+      color: #fff;
+      outline: none;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 940px) {
+      .cards-wrapper {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 700px) {
+      .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.8rem;
+      }
+      .card {
+        width: 90%;
+        max-width: 350px;
+      }
+      .Certificates-header {
+        max-width: 90vw;
+      }
+      }
+    .Certificates-header p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #f5f3f3;
+      margin: 0;
+      white-space: pre-line;
+    }
+    /* Cards wrapper */
+    .cards-wrapper {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    /* Each card */
+    .card {
+      background-color: #231f31;
+      color: #eee;
+      width: 280px;
+      padding: 1.6rem 1.8rem 2rem 1.8rem;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(249, 248, 248, 0.952);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 330px;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 12px 26px rgba(0,0,0,0.5);
+    }
+    /* Circle number */
+    .circle-number {
+      background-color: #eee;
+      color: #111;
+      font-weight: 700;
+      font-size: 1.15rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      line-height: 32px;
+      margin: 0 auto 16px auto;
+      user-select: none;
+      box-shadow: 0 0 6px rgba(255 255 255 / 0.3);
+    }
+    /* Titles */
+    .card h4 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0 0 14px 0;
+    }
+    /* paragraphs */
+    .card p {
+      font-size: 0.83rem;
+      line-height: 1.4;
+      color: #ddd;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+     /* buttons */
+    .read-more-btn {
+      background: white;
+      border: none;
+      color: #111;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      align-self: center;
+      min-width: 120px;
+    }
+    .read-more-btn:hover,
+    .read-more-btn:focus {
+      background-color: #555;
+      color: #fff;
+      outline: none;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 940px) {
+      .cards-wrapper {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 700px) {
+      .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.8rem;
+         }
+      .card {
+        width: 90%;
+        max-width: 350px;
+      }
+      .Certificates-header {
+        max-width: 90vw;
+      }
+    }
+    </style>
+</head>
+<body>
+ 
+</body>
+</html>
+
+
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <ul>
+      <li class="logo">PORTFOLIO</li>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#Certificates">Certificates</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-section" aria-label="Introduction section">
+    <div>
+      <h1>Hi! I'm <span style="color:#ffffff;">DEEKSHA NISHAD </span></h1>
+      <div class="highlighted-text">And I'm Web Designer</div>
+      <p>I am a passionate and detail-oriented Web Developer with a strong foundation in front-end and back-end technologies. I specialize in building responsive, user-friendly websites using HTML, CSS, JavaScript, and modern frameworks like React and Node.js.</p>
+      <div class="contact-info">
+        <p>Email: <span>dikshanishad2194@gmail.com</span></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn-glow" id="downloadCV">Download CV</button>
+        <button class="btn-glow" id="hireMe">Hire Me Now!</button>
+      </div>
+      <div class="social-letters" role="list" aria-label="Social media icons">
+        <button aria-label="Facebook page">F</button>
+        <button aria-label="Twitter page">T</button>
+        <button aria-label="YouTube channel">Y</button>
+        <button aria-label="Instagram profile">I</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="Screenshot 2025-07-22 100005.png" , width="200px", height="150px" />
+    </div>
+  </section>
+  
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about-section" aria-label="About me section">
+    <div class="about-photo-wrapper">
+      <img src="Screenshot 2025-07-22 112244.png" alt="Profile image of a professional young man with styled hair, softly smiling with moody blue neon lighting and blurred background" onerror="this.style.display='none';" />
+    </div>
+    <div class="about-text">
+      <div class="about-intro">LET ME INTRODUCE MYSELF</div>
+      <h2>About Me</h2>
+      <p>Hi, I’m a passionate and self-motivated web developer with a strong interest in building responsive and user-friendly websites. I have experience working with HTML, CSS, JavaScript, and basic frameworks like Bootstrap. I'm currently learning modern technologies like React and Node.js to become a full stack developer. .</p>
+      <button class="about-btn" id="learnMoreBtn" aria-label="Learn more about John Pater">Learn More</button>
+    </div>
+  </section>
+  
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="skills-section" aria-label="Skills section">
+    <h2>MY SKILLS</h2>
+    <div class="skills-container">
+      <div class="technical-skills" aria-label="Technical skills">
+        <h3>TECHNICAL SKILLS</h3>
+        <div class="skill-bar">
+          <div class="skill-bar-label">HTML</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 85%;"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-label">CSS</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 75%;"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-label">JavaScript</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 80%;"></div>
+          </div>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar-label">Photoshop</div>
+          <div class="progress-container">
+            <div class="progress-fill" style="width: 65%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="professional-skills" aria-label="Professional skills">
+        <h3>PROFESSIONAL SKILLS</h3>
+        <div class="prof-skill-circles" role="list">
+          <div class="circle-skill" role="listitem" aria-label="Communication skill level 90 percent">
+            <svg class="circle-svg" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="circle-progress" cx="50" cy="50" r="45" data-percent="90"></circle>
+              <text class="circle-percentage" x="50" y="53">90%</text>
+            </svg>
+            <p class="skill-name">Communication</p>
+          </div>
+          <div class="circle-skill" role="listitem" aria-label="Teamwork skill level 80 percent">
+            <svg class="circle-svg" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="circle-progress" cx="50" cy="50" r="45" data-percent="80"></circle>
+              <text class="circle-percentage" x="50" y="53">80%</text>
+            </svg>
+            <p class="skill-name">Teamwork</p>
+          </div>
+          <div class="circle-skill" role="listitem" aria-label="Creativity skill level 85 percent">
+            <svg class="circle-svg" width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="circle-progress" cx="50" cy="50" r="45" data-percent="85"></circle>
+              <text class="circle-percentage" x="50" y="53">85%</text>
+            </svg>
+            <p class="skill-name">Creativity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   <main class=" Certificates" role="main" aria-label="Certificates section">
+
+    <section class="Certificates-header" aria-labelledby="section-title subtitle">
+      <h2 id="section-title"> Certificates</h2>
+      <h3 id="subtitle">Qualities required</h3>
+      <p>
+        I have completed several industry-recognized certifications to strengthen my web development skills.
+         These include courses on Responsive Web Design, Front-End Development, and JavaScript from platforms like
+          alison,NPTEL, and infoyses. Through these certifications, I gained hands-on experience in building responsive 
+          websites using HTML, CSS, JavaScript, and modern frameworks
+      </p>
+    </section>
+
+    <section class="cards-wrapper" aria-label="List of certificates ">
+
+      <article class="card" tabindex="0" aria-labelledby="card1-title card1-desc" role="region">
+        <div class="circle-number" aria-hidden="true">1</div>
+        <h4 id="card1-title">Problem Solving</h4>
+        <img src="Screenshot 2025-05-17 223128.png" width="400px", height 400px> 
+        <p id="card1-desc">
+          If you want make a software for your bussiness contact me.I make as soon
+          as possible.You really like my work, If you don't i change this  until you like 
+          if you want.
+        </p>
+        
+      </article>
+
+      <article class="card" tabindex="0" aria-labelledby="card2-title card2-desc" role="region">
+        <div class="circle-number" aria-hidden="true">2</div>
+        <h4 id="card2-title">Graphic Design</h4>
+                <img src="Screenshot 2025-07-22 132306.png" width="390px", height 390px> 
+
+        <p id="card2-desc">
+          If you want make a software for your bussiness contact me.I make as soon
+          as possible.You really like my work, If you don't i change this  until you like 
+          if you want.
+        </p>
+      </article>
+
+      <article class="card" tabindex="0" aria-labelledby="card3-title card3-desc" role="region">
+        <div class="circle-number" aria-hidden="true">3</div>
+        <h4 id="card3-title">conference</h4>
+        <img src="Screenshot 2025-07-22 132414.png" width="390px",height390px> 
+        <p id="card3-desc">
+          If you want make a software for your bussiness contact me.I make as soon
+          as possible.You really like my work, If you don't i change this  until you like 
+          if you want.
+        </p>
+      </article>
+
+    </section>
+    
+  </main>
+  
+  <!-- projects SECTION -->
+  <section id="projects" class="projects-section" aria-label="Latest projects section">
+    <h2>LATEST PROJECTS</h2>
+    <div class="projects-grid" role="list">
+      <div class="projects-item" role="listitem" tabindex="0" aria-label="Project dashboard charts screenshot">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/423b2c9a-a537-43a7-a9d8-a0f25419698d.png" alt="Dark themed project dashboard with dynamic charts and graphs in neon green and orange colors" onerror="this.style.display='none';"/>
+      </div>
+      <div class="projects-item" role="listitem" tabindex="0" aria-label="Developer working on neon-lit keyboard and monitors">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1ef7b9f0-f781-4b86-9016-26aa0e15024d.png" alt="Developer focused on coding with neon pink and blue lighting in a dark room filled with multiple monitors and tech gear" onerror="this.style.display='none';"/>
+      </div>
+      <div class="projects-item" role="listitem" tabindex="0" aria-label="Purple neon-lit modern office computer setup">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d14d9e27-f6d0-41b0-ac77-c76de400887f.png" alt="Modern office computer setup with pink and purple neon lighting illuminating multiple monitors on a dark desk" onerror="this.style.display='none';"/>
+      </div>
+      <div class="projects-item" role="listitem" tabindex="0" aria-label="Laptop displaying code snippets on wooden table">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cd4400fc-6bfa-4bd8-a719-bc3c1a603741.png" alt="Laptop with visible code editor open on a wooden desk, illuminated with natural light through nearby window" onerror="this.style.display='none';"/>
+      </div>
+      <div class="projects-item" role="listitem" tabindex="0" aria-label="Programmer hands typing code on dark monitors">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bfc18acd-3684-4abd-a0f3-dfc2962707d1.png" alt="Close-up of a programmer typing code on illuminated monitors in a dark environment" onerror="this.style.display='none';"/>
+      </div>
+      <div class="projects-item" role="listitem" tabindex="0" aria-label="Gaming style neon-lit computer setup">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0e3a4f4a-bc0f-43e0-a5d8-b0a0da94b6bc.png" alt="High-tech gaming style computer setup glowing pink and blue neon lighting with multiple monitors and ambient lights" onerror="this.style.display='none';"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact-section" aria-label="Contact me section">
+    <h2>CONTACT ME</h2>
+    <form id="contactForm" aria-describedby="formSuccess formError">
+      <input type="text" id="fullName" name="fullName" placeholder="Your full name" 
+             aria-label="Full name" required autocomplete="name" />
+      <input type="email" id="email" name="email" placeholder="Your email address" 
+             aria-label="Email address" required autocomplete="email"/>
+      <input type="text" id="subject" name="subject" placeholder="Subject of your message" 
+             aria-label="Subject" required autocomplete="off" />
+      <textarea id="message" name="message" placeholder="Write your message here..." 
+                aria-label="Message" required></textarea>
+      <button type="submit" class="submit-btn">SEND MESSAGE</button>
+    </form>
+    <p id="formSuccess" role="alert" aria-live="polite" style="display:none; color: #00ffcc; margin-top: 1rem; font-weight: 600;">Message sent successfully! I will get back to you soon.</p>
+    <p id="formError" role="alert" aria-live="assertive" style="display:none; color: #ff4444; margin-top: 1rem; font-weight: 600;">Please fill in all fields correctly.</p>
+  </section>
+
+  <script>
+    // Smooth scroll for nav links & active link highlight
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetID = link.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetID);
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 65,
+            behavior: "smooth"
+          });
+        }
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Animate professional skills circular progress bars
+    window.addEventListener('load', () => {
+      const circles = document.querySelectorAll('.circle-progress');
+      circles.forEach(circle => {
+        const radius = circle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+        const percent = circle.getAttribute('data-percent');
+        const offset = circumference - (percent / 100) * circumference;
+        circle.style.strokeDasharray = circumference;
+        setTimeout(() => {
+          circle.style.strokeDashoffset = offset;
+        }, 300); // small delay for smooth animation
+      });
+    });
+
+    // Buttons actions
+    document.getElementById('downloadCV').addEventListener('click', () => {
+      // For demo, we simulate download from a placeholder url
+      window.open('https://example.com/john-pater-cv.pdf', '_blank');
+    });
+    document.getElementById('hireMe').addEventListener('click', () => {
+      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      // Highlight the contact nav link
+      navLinks.forEach(l => l.classList.remove('active'));
+      document.querySelector('nav ul li a[href="#contact"]').classList.add('active');
+    });
+    document.getElementById('learnMoreBtn').addEventListener('click', () => {
+      alert("Thank you for your interest! This would ideally open a detailed 'About Me' modal or page.");
+    });
+
+    // Form validation and submission simulation
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('formSuccess');
+    const errorMsg = document.getElementById('formError');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successMsg.style.display = "none";
+      errorMsg.style.display = "none";
+
+      const fullName = form.fullName.value.trim();
+      const email = form.email.value.trim();
+      const subject = form.subject.value.trim();
+      const message = form.message.value.trim();
+
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if(fullName && email && subject && message && emailValid){
+        // Simulate sending message, then show success
+        setTimeout(() => {
+          form.reset();
+          successMsg.style.display = "block";
+          errorMsg.style.display = "none";
+        }, 600);
+      } else {
+        errorMsg.style.display = "block";
+        successMsg.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
+
